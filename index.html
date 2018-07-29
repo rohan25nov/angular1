@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demoApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Anugular Page</title>
+    <script src="include/angular.min.js"></script>
+    <script>
+        var demoApp=angular.module('demoApp',[]);
+        demoApp.controller('SimpleController',function($scope){
+            $scope.celebrities=[{name:'Aishwarya Rai',city:'mumbai'},
+                {name:'Salman Khan',city:'mangalore'},
+                {name:'Sharukh Khan',city:'udupi'},
+                {name:'Rohan Salins',city:'kundapur'}];
+
+            $scope.addceleb=function(){
+                $scope.celebrities.push({name:$scope.NewCeleb.name,city:$scope.NewCeleb.city});
+            }
+        });
+    </script>
+</head>
+<body bgcolor="{{abc}}" ng-controller="SimpleController">
+<div ng-controller="SimpleController">
+	<input type="text" ng-model="abc"><br/>
+    <input type="text" ng-model="name"><br/>
+
+    <ul>
+        <li ng-repeat="celeb in celebrities | filter:name"><h4>{{celeb.name | uppercase}}-{{celeb.city}}</h4></li>
+    </ul>
+
+    customer Name :<br/> <input type="text" ng-model="NewCeleb.name"/><br/><br/>
+    customer City :<br/> <input type="text" ng-model="NewCeleb.city"/><br/><br/>
+    <button ng-click="addceleb()">Add the Customer</button>
+</div>
+</body>
+</html>
